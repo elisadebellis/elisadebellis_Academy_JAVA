@@ -10,22 +10,26 @@ public class Esercizio_3 {
         float nPostiDisponibili =0;
         
         Integer[][] posti = {{1,2,3,4,5,6,7,8},{1,2,3,4,5,6,7,8},{1,2,3,4,5,6,7,8}};
+
+        //contare il numero di posti totali
         for (Integer[] riga:posti){
             for (int r:riga){
                 nPostiDisponibili+=1;
             }
-
         }
+
+        //convertire in un arraylist 
         ArrayList<ArrayList<Integer>> arrayPostiDisponibili= new ArrayList<ArrayList<Integer>>();
         for (Integer[] riga:posti){
             arrayPostiDisponibili.add(new ArrayList<>(Arrays.asList(riga)));
         }
 
-        
+        //salvare i posti prenotati
         ArrayList<String> postiPrenotati = new ArrayList<String>();
         
-        
+        //scanner per interi
         Scanner scanner = new Scanner(System.in);
+        //scanner per stringhe
         Scanner scanner2 = new Scanner(System.in);
         
 
@@ -43,13 +47,16 @@ public class Esercizio_3 {
             case 0:
                 System.out.print("Prenotazione posto! \n Inserisci nome cliente: ");
                 String cliente = scanner2.nextLine();
+                //aggiungere cliente alla lista clienti
                 clienti.add(cliente);
-                System.out.println(" \n Seleziona un posto disponibile: ");
+                System.out.println("Seleziona un posto disponibile: ");
+                //mostra i posti disponibili
                 System.out.println(arrayPostiDisponibili);
 
                 System.out.println("Seleziona fila: (0,1,2)");
                 int fila = scanner.nextInt();
                 do {
+                    //controllo sulla fila corretta
                 if (fila > 2){
                     System.out.println("Fila non valida! Reinserisci fila:");
                     fila = scanner.nextInt();
@@ -57,10 +64,10 @@ public class Esercizio_3 {
                 
                 }while (fila > 2);
                     
-                
                 System.out.println("Seleziona posto: (1,2,3,4,5,6,7,8)");
                 int posto = scanner.nextInt();
                 do {
+                    //controllo sul posto
                 if (posto > 7){
                     System.out.println("Posto non valido! Reinserisci posto:");
                     posto = scanner.nextInt();
@@ -68,9 +75,10 @@ public class Esercizio_3 {
                 
                 }while (fila > 7);
 
-                
+                //rimovi il posto selezionato
                 arrayPostiDisponibili.get(fila).remove(posto-1);
                 nPostiDisponibili--;
+                //aggiungi nome cliente e posto nelle prenotazioni
                 postiPrenotati.add(cliente+":"+fila+","+posto);
                 System.out.println("Posto prenotato!");
                 
@@ -85,9 +93,8 @@ public class Esercizio_3 {
                 String cercaCliente = scanner2.nextLine();
                 int indice =0;
                 
-                boolean prenotazioneTrovata = false;
                 for (int i=0; i<postiPrenotati.size();i++){
-
+                    //se un elemento di posi prenotati contiene il nome del cliente
                     if(postiPrenotati.get(i).contains(cercaCliente)){
                         indice = i;
                         break;
@@ -99,6 +106,7 @@ public class Esercizio_3 {
 
             
                 break;
+            
             //visualizza posti disponibili
             case 2:
                 
@@ -107,21 +115,15 @@ public class Esercizio_3 {
                 System.out.print("Posti prenotati: ");
                 System.out.println(postiPrenotati);
 
-            
-            break;
+                break;
+
             //visualizza report
             case 3:
-            System.out.print("Report: ");
-            int nPostiPrenotati = postiPrenotati.toArray().length;
-            System.out.println(nPostiDisponibili);
-            System.out.println(nPostiPrenotati);
-
-            
-            float percentualePostiDisponibili = (nPostiDisponibili / 24) *100;
-            System.out.println("Percentuale posti disponibili: "+ percentualePostiDisponibili + "%");
-            
-            
-            break;
+                System.out.print("Report: ");
+                float percentualePostiDisponibili = (nPostiDisponibili / 24) *100;
+                System.out.println("Percentuale posti disponibili: "+ percentualePostiDisponibili + "%");
+                
+                break;
             
         }
         System.out.print("Cosa vuoi fare? \n 0: Prenotare un posto \n 1: Cercare prenotazione \n 2: Visualizzare i posti disponibili e prenotati \n 3: Visualizza report \n 4: Esci \n Inserisci un opzione:");
