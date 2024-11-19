@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class ArrayExample {
     public static void main(String[] args){
@@ -17,5 +19,18 @@ public class ArrayExample {
         //.toString() converte un array in un formato leggibile stringa (importare Arrays)
         //utile per stampare gli array
         System.out.println(Arrays.toString(numeri));
+
+        //Array Multidimensionale (Matrice)
+        int[][] myNumbers = { {1,2,3,4}, {5,6,7}};
+        System.out.println(myNumbers[1][2]); //Stampa 7
+
+        for (int i =0; i<myNumbers.length; i++){
+            for (int j=0; j<myNumbers[i].length; j++){
+                System.out.println(myNumbers[i][j]);
+            }
+        }
+
+        
+
     }
 }
