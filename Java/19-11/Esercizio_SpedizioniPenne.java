@@ -16,7 +16,7 @@ public class Esercizio_SpedizioniPenne {
         while (input!=4){
         switch (input) {
             case 0:
-                ArrayList<Integer>  spedizione = creaNuovoOrdine();
+                ArrayList<Integer> spedizione = creaNuovoOrdine();
                 aggiungiSpedizione(ListaSpedizioni,spedizione);
                 break;
 
@@ -33,7 +33,7 @@ public class Esercizio_SpedizioniPenne {
 
         }
 
-        System.out.print("Cosa vuoi fare? \n 0: Crea Nuova Spedizione \n 1: Visualizza Spedizioni \n 2: Calcolo totale penne\n 3: Cerca Spedizione \n 4: Esci \n Inserisci un opzione: ");
+        System.out.print("\nCosa vuoi fare? \n 0: Crea Nuova Spedizione \n 1: Visualizza Spedizioni \n 2: Calcolo totale penne\n 3: Cerca Spedizione \n 4: Esci \nInserisci un opzione: ");
         input = scanner.nextInt();
 
     
@@ -48,7 +48,7 @@ public class Esercizio_SpedizioniPenne {
 
         ArrayList<Integer> spedizione = new ArrayList<Integer>();
 
-        System.out.println("Quante penne rosse vuoi ordinare? ");
+        System.out.println("Nuova Spedizione! \nQuante penne rosse vuoi ordinare? ");
         int rosso = ordine.nextInt();
         spedizione.add(rosso);
         System.out.println("Quante penne blu vuoi ordinare? ");
@@ -61,7 +61,7 @@ public class Esercizio_SpedizioniPenne {
         int nero = ordine.nextInt();
         spedizione.add(nero);
 
-        System.out.println("Nuovo ordine: " + spedizione);
+        System.out.println("Nuovo ordine: " + spedizione +"\n");
 
         return spedizione;
     }
@@ -72,9 +72,16 @@ public class Esercizio_SpedizioniPenne {
     }
 
     public static void visualizzaSpedizioni(ArrayList<ArrayList<Integer>> ListaSpedizioni){
-       for(ArrayList<Integer> sp:ListaSpedizioni){
-            System.out.println("Spedizioni: " + sp);
-       }
+        
+        if (ListaSpedizioni.size()==0){
+            System.out.println("Non sono presenti spedizioni " );
+        }
+      
+        for (int i=0; i<ListaSpedizioni.size(); i++){
+                System.out.println("Lista Spedizioni: " );
+                System.out.println("Spedizione "+ i + ": " + "[Rosse: " + ListaSpedizioni.get(i).get(0) + ", Blu: " + ListaSpedizioni.get(i).get(1)+ ", Verde: " + ListaSpedizioni.get(i).get(2)+ ", Nere: " + ListaSpedizioni.get(i).get(3)+"]" );
+                
+        }
     }
 
     public static void calcoloTotalePenne(ArrayList<ArrayList<Integer>> ListaSpedizioni){
@@ -84,6 +91,8 @@ public class Esercizio_SpedizioniPenne {
         int verde = 0;
         int nero = 0;
 
+       
+
         for (int i=0; i<ListaSpedizioni.size(); i++){
             rosso += ListaSpedizioni.get(i).get(0);
             blu += ListaSpedizioni.get(i).get(1);
@@ -92,12 +101,12 @@ public class Esercizio_SpedizioniPenne {
             }
         
 
-        System.out.println("Rosso: " + rosso + " Blu: " + blu + " Verde: " + verde +" Nero: " + nero);
+        System.out.println("Rosso: " + rosso + " Blu: " + blu + " Verde: " + verde +" Nero: " + nero + "\n");
     }
 
-    public static Integer[] cercaSpedizione(ArrayList<ArrayList<Integer>> ListaSpedizioni) {
+    public static ArrayList<Integer> cercaSpedizione(ArrayList<ArrayList<Integer>> ListaSpedizioni) {
 
-        Integer[] spedizioneTrovata = {};
+        ArrayList<Integer> spedizioneTrovata = new ArrayList<Integer>();
         Scanner scanner = new Scanner(System.in);
         
         System.out.println("Inserisci colore:");
@@ -105,40 +114,49 @@ public class Esercizio_SpedizioniPenne {
 
         switch (colore) {
             case "rosso":
-            for (int i=0; i<ListaSpedizioni.size(); i++){
-                if (ListaSpedizioni.get(i).get(0) > 0){
-                    System.out.println("Spedizione trovata" + ListaSpedizioni.get(i));
-                    break;
-                }
-            }
+            if (ListaSpedizioni.size() > 0){
+                for (int i=0; i<ListaSpedizioni.size(); i++){
+                    if (ListaSpedizioni.get(i).get(0) > 0){
+                        System.out.println("Spedizione trovata " + ListaSpedizioni.get(i) + "\n");
+                        break;
+                    } else {System.out.println("Spedizione non trovata");}
+                }}
+                else {System.out.println("Spedizione non trovata");} 
             break;
 
             case "blu":
-            for (int i=0; i<ListaSpedizioni.size(); i++){
-                if (ListaSpedizioni.get(i).get(1) > 0){
-                    System.out.println("Spedizione trovata" + (ListaSpedizioni.get(i)));
-                    break;
-                }
-            }
+            if (ListaSpedizioni.size() > 0){
+                for (int i=0; i<ListaSpedizioni.size(); i++){
+                    if (ListaSpedizioni.get(i).get(1) > 0){
+                        System.out.println("Spedizione trovata" + (ListaSpedizioni.get(i)) + "\n");
+                        break;
+                    }else {System.out.println("Spedizione non trovata");}
+            }} else {System.out.println("Spedizione non trovata");}
             break;
 
             case "verde":
-            for (int i=0; i<ListaSpedizioni.size(); i++){
-                if (ListaSpedizioni.get(i).get(2) > 0){
-                    System.out.println("Spedizione trovata" + (ListaSpedizioni.get(i)));
-                    break;
-                }
-            }
+            if (ListaSpedizioni.size() > 0){
+                for (int i=0; i<ListaSpedizioni.size(); i++){
+                    if (ListaSpedizioni.get(i).get(2) > 0){
+                        System.out.println("Spedizione trovata" + (ListaSpedizioni.get(i)) + "\n");
+                        break;
+                    } else {System.out.println("Spedizione non trovata");}
+                }} else {System.out.println("Spedizione non trovata");}
+
             break;
 
             case "nero":
-            for (int i=0; i<ListaSpedizioni.size(); i++){
-                if (ListaSpedizioni.get(i).get(3) > 0){
-                    System.out.println("Spedizione trovata: " + (ListaSpedizioni.get(i)));
-                    break;
-                }
-            }
+            if (ListaSpedizioni.size() > 0){
+                for (int i=0; i<ListaSpedizioni.size(); i++){
+                    if (ListaSpedizioni.get(i).get(3) > 0){
+                        System.out.println("Spedizione trovata: " + (ListaSpedizioni.get(i)) + "\n");
+                        break;
+                    } else {System.out.println("Spedizione non trovata");}
+                }} else {System.out.println("Spedizione non trovata");}
             break;
+
+            default:
+                System.out.println("Spedizione non trovata");
         
         }
 
