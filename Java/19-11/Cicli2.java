@@ -10,13 +10,13 @@ public class Cicli2 {
             System.out.println(i);
             i++;
         }
-        //controllo logico booleano 
+        //controllo logico ciclo booleano 
         boolean controllo = true;
         while(controllo){
             controllo = false;
             System.out.println("Boolean while");
         }
-        //ciclo rotto con il break
+        //ciclo con rottura con il break
         controllo = true;
         while(controllo){
             System.out.println("Broken while");
