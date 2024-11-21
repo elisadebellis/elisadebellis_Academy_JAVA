@@ -22,12 +22,12 @@ public class Film {
 
     //metodo per modificare il titolo
     public void setTitoloFilm(String nuovoTitolo){
-        titoloFilm = nuovoTitolo;
+        this.titoloFilm = nuovoTitolo;
     }
 
     //metodo per modificare l'anno di uscita
     public void setAnnoUscita(int nuovoAnno){
-        annoUscita = nuovoAnno;
+        this.annoUscita = nuovoAnno;
     }
 
     @Override
