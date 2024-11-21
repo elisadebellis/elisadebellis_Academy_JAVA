@@ -28,4 +28,32 @@ class Auto{
     public void accelera(int incremento){
         velocita+=incremento;
     }
+
+
+    //QUASI SEMPRE DA FAREE!!
+    //Metodo di riscrittura
+    @Override
+    public String toString(){
+        return "Auto{" +
+        "modello:" + modello;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if (this == obj){
+            return true;
+        }
+        if (obj == null || getClass()!= obj.getClass()){
+            return false;
+        }
+        Auto auto = (Auto) obj;
+        return true;
+    }
+
+    @Override
+    //restituisce un valore hash per un oggetto
+    //SOLO SE SOVRASCRIVI EQUALS FARE ANCHE HASCODE perche devono avere anche lo stesso hash
+    public int hashCode(){
+        return modello.hashCode() + 31; //calcola un valore hash
+    }
 }
