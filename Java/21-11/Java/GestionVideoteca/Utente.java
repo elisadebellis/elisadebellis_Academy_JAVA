@@ -4,20 +4,22 @@ public class Utente {
 
     int idUtente;
     String nome;
-    ArrayList<Film> filmNoleggiati;
+    public ArrayList<Film> filmNoleggiati = new ArrayList<Film>();
 
     public Utente(int idUtente, String nome){
         this.idUtente=idUtente;
         this.nome = nome;
     }
 
+    //aggiunge un film alla lista dei film
     public void noleggiaFilm(Film film){
         filmNoleggiati.add(film);
     }
 
+    //stampa i film dell'utente
     public void myFilms(){
         for (Film film:filmNoleggiati){
-            film.toString();
+            System.out.println(film.toString());
         }
     }
 

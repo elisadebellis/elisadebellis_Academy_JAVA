@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Videoteca {
     
-    ArrayList<Utente> utenti = new ArrayList<Utente>();
-    ArrayList<Film> films = new ArrayList<Film>();
+    public ArrayList<Utente> utenti = new ArrayList<Utente>();
+    public ArrayList<Film> films = new ArrayList<Film>();
 
     //aggiunta di film nella videoteca
     public void addFilmVideoteca(Film film){
@@ -72,9 +72,13 @@ public class Videoteca {
 
     //visualizza film noleggiati da un utente
     public void filmUtente(Utente utente){
+
+        if (utente.filmNoleggiati.size()== 0){
+            System.out.println("Nessun film noleggiato");
+        }else {
         for (Film film:utente.filmNoleggiati){
-            film.toString();
-        }
+            System.out.println(film.toString());
+        }}
     }
 
     //noleggio film per l'utente
