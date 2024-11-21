@@ -21,9 +21,12 @@ public class MainRistorante {
                     System.out.println(utente.toString());
                     break;
                 case 2:
+                    break;
                     
 
             }
+            stampaMenu();
+            option = intScanner.nextInt();
         } while(option<4);
 
 
@@ -41,7 +44,8 @@ public class MainRistorante {
         utente.setName(nomeUtente);
         System.out.println("Inserisci email: ");
         String emailUtente = stringScanner.nextLine();
-        utente.setName(emailUtente);
+        utente.setEmail(emailUtente);
+        utente.setSoldi();
         System.out.println("Utente registrato");
 
         return utente;

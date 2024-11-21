@@ -57,7 +57,7 @@ class Utente extends Ristorante {
     public String toString(){
         return "Utente {" +
         "Nome:" + nome +"," + 
-        "Email: " + email + "Soldi" + soldi + "}";
+        "Email: " + email +"," +"Soldi: " + soldi + "}";
     }
 
 
