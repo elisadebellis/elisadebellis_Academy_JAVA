@@ -34,7 +34,7 @@ public class Film {
     public String toString(){
         return "Film {" +
         "Titolo:" + titoloFilm +"," + 
-        "Anno di Uscita: " + annoUscita;
+        "Anno di Uscita: " + annoUscita + "}";
     }
 
     @Override
@@ -45,7 +45,8 @@ public class Film {
         if (obj == null || getClass()!= obj.getClass()){
             return false;
         }
-        else return false;
+        Film film = (Film) obj;
+        return annoUscita == film.annoUscita && titoloFilm.equals(film.titoloFilm);
     }
 
 
