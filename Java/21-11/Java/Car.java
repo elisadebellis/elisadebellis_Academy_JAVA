@@ -21,6 +21,7 @@ class Car extends Vehicle{
 
 class Bike extends Vehicle {
 
+    @Override
     void run(){
         System.out.println("La bici sta correndo");
     }
