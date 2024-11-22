@@ -22,4 +22,22 @@ abstract class Animal {
       myDog.animalSound();
    }  }
 
+   // classe astratta per raggruppare metodi correlati con corpi vuoti
+   // possiamo avere una SORTA di "ereditarietà multipla"
+   // una classe reale e vado a riempirlo con tutte le possibilità tra le
+   interface Animale {
+    public void animalSound(); // interface method (does not have a body)
+    public void sleep(); // interface method (does not have a body)}
+   }
+  class Pig1 implements Animale {
+    public void animalSound() {
+      System.out.println("The pig says: wee wee");  }
+    public void sleep() {
+      System.out.println("Zzz"); }}
+  class Main {
+    public static void main(String[] args) {
+      Pig1 myPig = new Pig1();  
+      myPig.animalSound();
+      myPig.sleep(); }}
+  
    
