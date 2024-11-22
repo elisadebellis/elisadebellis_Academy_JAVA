@@ -5,6 +5,9 @@ public class Ristorante {
     
     protected ArrayList<String> piatti = new ArrayList<String>();
     protected ArrayList<String> valutazioniPiatti = new ArrayList<String>();
+    protected ArrayList<Chef> chefs = new ArrayList<Chef>();
+    protected ArrayList<Critico> critici = new ArrayList<Critico>();
+
 
     public void getPiatti(){
         for (String piatto:piatti){
@@ -18,10 +21,41 @@ public class Ristorante {
         }
     }
 
+    public void addChef(User user, String pss){
+        Chef chef = new Chef(user.getName(), user.getEmail(), pss);
+        chefs.add(chef);
+    }
+
+    public void addCritico(Critico critico){
+        critici.add(critico);
+    }
+
+    public boolean checkUtenteChef(User user){
+        for (Chef chef:chefs){
+            if (user.getName().equals(chef.getName())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean checkUtenteCritico(User user){
+        return critici.contains(user);
+    }
+
+    public Chef cercaChef(User utente){
+        for (Chef chef:chefs){
+            if (chef.getName().equals(utente.getName())){
+                return chef;
+            }
+        }
+        return null;
+    }
+
 
 }
 
-class Utente extends Ristorante {
+class User extends Ristorante {
     
     protected String nome;
     protected String email;
@@ -63,7 +97,7 @@ class Utente extends Ristorante {
 
 }
 
-class Chef extends Utente {
+class Chef extends User {
 
     private String psswd;
 
@@ -76,14 +110,16 @@ class Chef extends Utente {
     }
 }
 
-class Critico extends Utente {
+class Critico extends User {
 
     private String nome;
     private String email;
+    private String passkey;
 
-    public Critico(String nome, String email){
+    public Critico(String nome, String email, String pass){
         this.nome = nome;
         this.email = email;
+        this.passkey = pass;
     }
 
     public void aggiungiValutazione(String valutazione){
