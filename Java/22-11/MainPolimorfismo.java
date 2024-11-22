@@ -12,6 +12,7 @@ class Animal {
     } }
   class MainPolimorfismo {
     public static void main(String[] args) {
+      //opzionale perchè non eiste animale generico (da evitare)
       Animal myAnimal = new Animal();  
       Animal myPig = new Pig(); 
       Animal myDog = new Dog();  
