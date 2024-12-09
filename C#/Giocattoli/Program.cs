@@ -2,16 +2,16 @@
 class Giocattoli{
        
 
-        public string nome {get; set};
-        public string materiale {get; set};
-        public decimal prezzo_prod {get; set};
-        public decimal prezzo_vend {get; set};
+        public string Nome {get; private set;}
+        public string Materiale {get; private set;}
+        public decimal Prezzo_prod {get; private set;}
+        public decimal Prezzo_vend {get; private set;}
 
         public Giocattoli(string nome,string materiale, decimal prezzo_prod, decimal prezzo_vend){
-            nome = nome;
-            materiale = materiale;
-            prezzo_prod = prezzo_prod;
-            prezzo_vend = prezzo_vend;
+            Nome = nome;
+            Materiale = materiale;
+            Prezzo_prod = prezzo_prod;
+            Prezzo_vend = prezzo_vend;
         }
 
  
@@ -21,13 +21,13 @@ class FabbricaGiocattoli{
 
     private List<Giocattoli> giocattoli_prodotti = new List<Giocattoli>();
 
-    public void add_giocattoli(Giocattoli giocattoli){
-        giocattoli_prodotti.Add(giocattoli);
+    public void add_giocattoli(Giocattoli giocattolo){
+        giocattoli_prodotti.Add(giocattolo);
     }
 
     public void lista_giocattoli(){
         foreach(Giocattoli g in giocattoli_prodotti){
-            Console.WriteLine($"[nome: {g.nome}, materiale: {g.materiale}, prezzo di vendita:{g.prezzo_vend}]");
+            Console.WriteLine($"[nome: {g.Nome}, materiale: {g.Materiale}, prezzo di vendita:{g.Prezzo_vend}]");
         }
 
     }
@@ -36,7 +36,7 @@ class FabbricaGiocattoli{
 
         decimal netto = 0m;
         foreach(Giocattoli g in giocattoli_prodotti){
-            netto+= g.prezzo_vend - g.prezzo_prod;
+            netto+= g.Prezzo_vend - g.Prezzo_prod;
         }
         return netto;
 
